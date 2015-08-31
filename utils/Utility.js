@@ -153,7 +153,7 @@ exports.getClientIPFromRequest = function(reqObj) {
     var forwardedHeaders = ['x-forwarded-for', 'x-real-ip'];
 
     IP = localhostIP;
-    if (!reqObj.isSocketRequest()) {
+    if (!reqObj.isSocket) {
         for (i = 0; i < forwardedHeaders.length; i++) {
             if ('undefined' !== typeof reqObj.headers[ forwardedHeaders[i] ]) {
                 IP = reqObj.headers[ forwardedHeaders[i] ];

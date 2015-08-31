@@ -9,10 +9,11 @@ module.exports = Routing = {};
 Routing.initRouting = function(next) {
 
     /// Object property, holds routes...
-    this.routes =  {r : {}};
-
-    /// Method for building urls, this way it will be available from framework object!
-    this.routes.get = Routing.get;
+    this.routes = {
+        r: {},
+        host: this.app.get('host'),
+        get: Routing.get
+    };
 
     /// Load routes..
     var loadSuccess = Routing.loadRoutes.apply(this, [this.dir.app + '/routes.js']);
@@ -215,14 +216,14 @@ Routing.get = function(name, params, fullUrl) {
         fullUrl = params;
         params  = null;
     }
-    if ('undefined' !== typeof this.routes.r[name]) {
-        var url = this.routes.r[name].url;
+    if ('undefined' !== typeof this.r[name]) {
+        var url = this.r[name].url;
         if (params) {
             for (var i in params) {
                 url = url.replace(':' + i, encodeURIComponent(params[i])).replace(/\(.*\)/g, "");
             }
         }
-        return fullUrl ? this.app.get('host') + url : url;
+        return fullUrl ? this.host + url : url;
     } else {
         return "/";
     }
