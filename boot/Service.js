@@ -11,7 +11,7 @@ module.exports = Service = {};
 Service.initServices = function(next) {
     var self = this;
     var fs = require('fs');
-    var servicesPath = self.pwd + this.app.get('servicesDirectory');
+    var servicesPath = this.dir.app + this.app.get('servicesDirectory');
 
     this.service = {
         serviceObjectPaths : {},
@@ -38,19 +38,19 @@ Service.initServices = function(next) {
      * @type {{get: Function}}
      */
     this.service.get = function(name) {
-        if (self.serviceObjectPaths[name]) {
-            if (!self.serviceInstances[name]) {
-                var object = require(self.serviceObjectPaths[name]);
-
-                /// Reference to framework...
-                object.Jet = self;
+        if (self.service.serviceObjectPaths[name]) {
+            if (!self.service.serviceInstances[name]) {
+                var object = require(self.service.serviceObjectPaths[name]);
 
                 /// Create service instance...
-                self.serviceInstances[name] = new object();
+                self.service.serviceInstances[name] = new object();
+
+                /// Reference to framework
+                self.service.serviceInstances[name].Jet = self;
             }
 
             /// Return service instance...
-            return self.serviceInstances[name];
+            return self.service.serviceInstances[name];
         } else {
             return null;
         }
@@ -69,7 +69,7 @@ Service.parseDirectoryStructure = function(tree, path) {
     /// Get the files...
     if (tree.__files__) {
         for (i in tree.__files__) {
-            this.service.serviceObjectPaths[ tree.__files__[i].replace(/(\.js)Jet/g, "") ] = path + "/" + tree.__files__[i];
+            this.service.serviceObjectPaths[ tree.__files__[i].replace(/(\.js)$/g, "") ] = path + "/" + tree.__files__[i];
         }
     }
 
