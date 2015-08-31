@@ -60,6 +60,7 @@ Middleware.initSession = function(next) {
     /// If we do not use se sessions.
     if (!this.app.get('useSession')) {
         next();
+        return;
     }
 
     var self = this;
