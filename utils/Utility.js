@@ -4,7 +4,7 @@
  * @returns {string}
  */
 exports.md5 = function(data) {
-    return Jet.nm.crypto.createHash('md5').update(data).digest('hex')
+    return require('crypto').createHash('md5').update(data).digest('hex')
 };
 
 /**
@@ -17,7 +17,7 @@ exports.md5 = function(data) {
 exports.sha1 = function(data, encoding, digest) {
     var enc = typeof encoding === 'undefined' ? 'utf8' : encoding;
     var dig = typeof digest === 'undefined' ? 'hex' : digest;
-    return Jet.nm.crypto.createHash('sha1').update(data, enc).digest(dig);
+    return require('crypto').createHash('sha1').update(data, enc).digest(dig);
 };
 
 /**
