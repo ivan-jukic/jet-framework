@@ -1,0 +1,8 @@
+node_modules
+.idea
+logs/express.log
+v8.log
+*.log
+build
+obj
+config.js
