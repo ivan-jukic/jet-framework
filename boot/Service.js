@@ -42,6 +42,9 @@ Service.initServices = function(next) {
             if (!self.serviceInstances[name]) {
                 var object = require(self.serviceObjectPaths[name]);
 
+                /// Reference to framework...
+                object.Jet = self;
+
                 /// Create service instance...
                 self.serviceInstances[name] = new object();
             }
