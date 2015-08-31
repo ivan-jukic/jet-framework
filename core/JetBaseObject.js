@@ -102,6 +102,33 @@ JetBaseObject.prototype.setStatusCode = function(code) {
 };
 
 /**
+ * Returns key value from the session object!
+ * @param key
+ */
+JetBaseObject.prototype.getSession = function(key) {
+    if (this.req.session) {
+        if ('undefined' === typeof key) {
+            return this.req.session;
+        }
+        if (this.req.session[key]) {
+            return this.req.session[key];
+        }
+    }
+    return undefined;
+};
+
+/**
+ * Method used to set value into the session.
+ * @param key
+ * @param value
+ */
+JetBaseObject.prototype.setSession = function(key, value) {
+    if (this.req.session) {
+        this.req.session[key] = value;
+    }
+};
+
+/**
  * Set cookie.
  * @param name
  * @param value
