@@ -72,7 +72,11 @@ Factory.initObjectFactory = function(next) {
             /// If an object has been returned as a result of the previous
             /// operation, then return it. Otherwise return the original
             /// instance. This behaviour is the same as using "new" operator.
-            return Object(ret) === ret ? ret : instance;
+            var object = Object(ret) === ret ? ret : instance;
+
+            /// Reference to framework...
+            object.Jet = self;
+            return object;
         } else {
             return null;
         }

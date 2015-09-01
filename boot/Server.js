@@ -131,9 +131,9 @@ Server.initSocketMiddleware = function(events) {
 
         for (namespace in events) {
             if ("/" === namespace) {
-                this.io.use(tmp()); /// Use this middleware...
+                this.io.use(tmp.call(this)); /// Use this middleware...
             } else {
-                this.io.of(namespace).use(tmp()); /// Use this middleware...
+                this.io.of(namespace).use(tmp.call(this)); /// Use this middleware...
             }
         }
     }
@@ -208,7 +208,7 @@ Server.__callSocketEventHandler = function(Jet, event, data, eventName, namespac
 
     /// Get jet controller!
     var JetController= require(Jet.dir.jet + "/core/JetController.js");
-    var JC = new JetController();
+    var JC = new JetController(Jet);
 
     /// Process socket request...
     JC.process(req, res, event.ctl, event.method);
