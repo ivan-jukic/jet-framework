@@ -49,4 +49,4 @@ To run the tests:
 
 ## LICENCE
 
-Released under [MIT licence](http://mit-license.org/)
+Released under [MIT licence](http://mit-license.org/).
