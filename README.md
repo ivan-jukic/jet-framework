@@ -46,3 +46,7 @@ To run the tests:
 ```
 ./node_modules/jasmine-node/bin/jasmine-node test/spec --captureExceptions --forceexit
 ```
+
+## LICENCE
+
+Released under [MIT licence](http://mit-license.org/)
