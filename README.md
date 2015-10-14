@@ -41,8 +41,13 @@ require('jet-framework')();
 Tests are run by using jasmine-node module. They are testing the basic functionality of the framework.
 Because in this version the framework is not fully implemented, some tests are missing (eg. Socket.io tests).
 
-To run the tests run:
+To run the tests:
 
 ```
 ./node_modules/jasmine-node/bin/jasmine-node test/spec --captureExceptions --forceexit
 ```
+
+## LICENCE
+
+Released under [MIT licence](http://mit-license.org/).
+>>>>>>> f1fa1f78a6fa31de64b63d662ee59ea0c75dcdd5
