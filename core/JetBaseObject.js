@@ -97,7 +97,7 @@ JetBaseObject.prototype.setHeader = function(key, val) {
  */
 JetBaseObject.prototype.setStatusCode = function(code) {
     if (!isNaN(parseInt(code))) {
-        this.res.code(parseInt(code));
+        this.res.status(parseInt(code));
     }
 };
 

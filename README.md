@@ -43,4 +43,6 @@ Because in this version the framework is not fully implemented, some tests are m
 
 To run the tests run:
 
-> **./node_modules/jasmine-node/bin/jasmine-node test/spec --captureExceptions --forceexit**
+```
+./node_modules/jasmine-node/bin/jasmine-node test/spec --captureExceptions --forceexit
+```
