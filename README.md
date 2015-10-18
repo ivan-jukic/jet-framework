@@ -50,4 +50,3 @@ To run the tests:
 ## LICENCE
 
 Released under [MIT licence](http://mit-license.org/).
->>>>>>> f1fa1f78a6fa31de64b63d662ee59ea0c75dcdd5
